@@ -8,8 +8,6 @@
 
 package edu.bu.met.cs665.customer;
 
-import java.util.Objects;
-
 /** Presents a legacy USB customer provider through the new system's interface. */
 public final class UsbToHttpsAdapter implements CustomerDataViaHttps {
 

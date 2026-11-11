@@ -104,7 +104,7 @@ public class CustomerSystemTest {
 
   /** Builds an adapter with the supplied customers and captured print output. */
   private CustomerDataViaHttps newApi(List<Customer> customers, PrintWriter output) {
-    return new UsbToHttpsAdapter(new LegacyUsbCustomerData(customers, output::println));
+    return new UsbToHttpsAdapter(new LegacyUsbCustomerData(customers, output));
   }
 
   /** Runs a session with scripted input and captures output from the CLI and legacy printer. */

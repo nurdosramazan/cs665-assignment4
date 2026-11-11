@@ -8,30 +8,31 @@
 
 package edu.bu.met.cs665.customer;
 
+import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /** Implements the legacy USB API using in-memory collection of customers. */
 public final class LegacyUsbCustomerData implements CustomerDataViaUsb {
 
   private final Map<Integer, Customer> customersById;
-  private final Consumer<String> printLine;
+  private final PrintWriter output;
 
   /**
    * Creates a provider that looks up customers from an in-memory snapshot.
    *
    * @param customers the records to look up by ID
-   * @param printLine the operation that writes one line to the legacy output
-   * @throws IllegalStateException if two records have the same ID
+   * @param output the writer for legacy customer details
    */
-  public LegacyUsbCustomerData(Collection<Customer> customers, Consumer<String> printLine) {
-    this.customersById = customers.stream()
-        .collect(Collectors.toUnmodifiableMap(Customer::id, Function.identity()));
-    this.printLine = printLine;
+  public LegacyUsbCustomerData(Collection<Customer> customers, PrintWriter output) {
+    Map<Integer, Customer> records = new HashMap<>();
+    for (Customer customer : customers) {
+      records.put(customer.id(), customer);
+    }
+    this.customersById = Map.copyOf(records);
+    this.output = new PrintWriter(output, true);
   }
 
   /**
@@ -39,7 +40,7 @@ public final class LegacyUsbCustomerData implements CustomerDataViaUsb {
    */
   @Override
   public void printCustomer(int customerId) {
-    printLine.accept(getCustomerViaUsb(customerId).displayText());
+    output.println(getCustomerViaUsb(customerId).displayText());
   }
 
   /**

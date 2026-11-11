@@ -19,7 +19,7 @@ import java.util.Scanner;
 
 /** Starts the customer lookup application. */
 public final class Main {
-    /**
+  /**
    * Runs the CLI with in-memory examples.
    *
    * @param args unused command-line arguments
@@ -32,7 +32,7 @@ public final class Main {
             new Customer(202, "Mateo Silva", "mateo@example.test"),
             new Customer(303, "Nora Patel", "nora@example.test"),
             new Customer(404, "Julian Brooks", "julian@example.test")),
-        output::println);
+        output);
     CustomerDataViaHttps customerData = new UsbToHttpsAdapter(legacyData);
     new CustomerLookupCli(customerData)
         .run(new Scanner(System.in), output);
