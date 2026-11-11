@@ -8,13 +8,13 @@
     <!-- This is the Maven groupId of the project, which identifies the project uniquely across all projects. -->
     <groupId>edu.bu.cs665</groupId>
     <!-- This specifies the name of the project's artifact (e.g., the compiled output file or library) that will be created when the project is built. -->
-    <artifactId>JavaProjectTemplate</artifactId>
+    <artifactId>legacy-system</artifactId>
     <!-- The version of the project -->
     <version>1.0-SNAPSHOT</version>
     <!-- This line specifies the packaging type of the project, which in this case is "jar" (Java Archive), meaning that the project will be packaged as a JAR file. -->
     <packaging>jar</packaging>
-    <!-- This line sets the name of the Maven project to "JavaProjectTemplate". It can be used to give the project a more descriptive name than just the artifact ID. -->
-    <name>JavaProjectTemplate</name>
+    <!-- This line sets the name of the Maven project. It can be used to give the project a more descriptive name than just the artifact ID. -->
+    <name>Utilizing Legacy Systems</name>
     <!-- Specifies the URL where information about the project can be found -->
     <url>http://maven.apache.org</url>
     <!-- The <properties> element is used to define project-wide properties.
